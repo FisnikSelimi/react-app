@@ -24,3 +24,11 @@ jobs:
          run: npm run format
          env:
            CI: true
+      -  name: Build Project
+         if: github.event_name == 'push'
+         run: npm run build
+      -  name: Install surge
+         run: npm install -g surge
+      -  name: Deploy to Staging
+         if: github.event_name == 'push'
+         run: npx surge --project ./build --domain test.localhost
