@@ -16,9 +16,9 @@ jobs:
       -  name: Use NodeJS
          uses: actions/setup-node@v3
          with:
-           node-version: 19.7.x
+           node-version: 18.12.1
       -  name: Install dependencies
-         run: npm install
+         run: npm install --production
       -  name: Run format fix
          run: npm run format
       -  name: Run format check
