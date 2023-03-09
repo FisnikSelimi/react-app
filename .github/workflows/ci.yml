@@ -16,7 +16,11 @@ jobs:
            node-version: 18.x
       -  name: Install dependencies
          run: npm install
+      -  name: Run format fix
+         run: npm run format
       -  name: Run format check
          run:  npm run format:check
       -  name: Run format
          run: npm run format
+         env:
+           CI: true
