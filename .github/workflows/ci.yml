@@ -1,0 +1,26 @@
+# Testing pull request
+name: CI
+on: 
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+      -  name: Checkout Repository
+         uses: actions/checkout@v3
+      -  name: Use NodeJS
+         uses: actions/setup-node@v3
+         with:
+           node-version: 18.x
+      -  name: Install dependencies
+         run: npm install
+      -  name: Run format fix
+         run: npm run format
+      -  name: Run format check
+         run:  npm run format:check
+      -  name: Run format
+         run: npm run format
+         env:
+           CI: true
